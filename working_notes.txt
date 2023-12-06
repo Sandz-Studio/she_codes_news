@@ -1,0 +1,44 @@
+STYLE 
+- Carousel 
+- Dark Mode 
+- Accessibility - Font Size, colour pallete
+- Share Links
+
+FIXES
+- Time on Articles (Templates?)
+- Sort Stories newest to oldest 
+
+• Key word search 
+
+• Pagination 
+
+• News Story Changes 
+    - Categories (put your story inputs with categories.)
+    - page views tracker 
+    - link similar stories 
+    - Live updates
+    - Word/character count for articles 
+    - Custom image for stories (URL)
+
+• Interactivity 
+    - comments(edit/delete) (will need new models - many to many tables)
+    - likes 
+
+• Management
+    - Deleting Stories 
+
+• Users 
+    - Profile picture (*ImageField)
+    - custom homepage - user interface
+    - Reset password 
+
+• Permissions
+    - Author, reader, admin
+    - Edit story > Are you the creator?
+
+
+
+
+
+ 
+
