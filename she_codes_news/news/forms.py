@@ -16,6 +16,6 @@ class StoryForm(ModelForm):
                 }
             ),
         }
-        labels = {
-            'category': 'Select'
-        }
+        # labels = {
+        #     'category': 'Select'
+        # }

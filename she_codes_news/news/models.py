@@ -3,8 +3,8 @@ from django.contrib.auth import get_user_model
 
 
 class NewsStory(models.Model):
-    CAT_CHOICES = [
-        ('Pets', 'Pets'),
+    Categories = [
+        ('Animals', 'Animals'),
         ('Travel', 'Travel'),
         ('Food', 'Food'),
         ('World', 'World'),
@@ -20,7 +20,7 @@ class NewsStory(models.Model):
         on_delete=models.CASCADE
     )
 
-    category = models.CharField(max_length=15, blank=False, choices=CAT_CHOICES, default="")
+    category = models.CharField(max_length=15, blank=False, choices=Categories, default="")
     pub_date = models.DateTimeField()
     content = models.TextField()
     image = models.URLField(null=True, blank=True)
