@@ -2,21 +2,32 @@
 {% load static %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
 {% endblock %}
 
 {% block content %} 
 <section id="author-profile">
     {% if request.user.is_authenticated %}
-    <h2>{{ story.author }}</h2> 
+    <h2>Hello {{ user.username }}!</h2> 
     
     <div>
-        {% if author.profile_photo %}
-            <img src="{{ author.profile_photo }}">
+        {% if user.profile_photo %}
+            <img src="{{ user.profile_photo }}">
         {% else %}
             <img src="{% static '/news/images/placeholder-5.jpg' %}">
         {% endif %}
-        {{ author.stories|linebreaks }}
+    </div>
+    <div>
+        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+        <p>DOB: {{ user.birth_date }}</p>
+        <p>Bio: {{ user.bio }}</p>
+    </div>
+    <div>
+        {% for story in user_stories %}
+            <h3>{{ story.title }}</h3>
+            <p>{{ story.content }}</p>
+            <!-- Include other details as needed -->
+        {% endfor %}
     </div>
 
     {% else %}

@@ -19,9 +19,6 @@ class NewsStory(models.Model):
         get_user_model(),
         on_delete=models.CASCADE
     )
-# tring to show the user first name. 
-    # def get_author_name(self):
-    #     return self.author.first_name if self.author else None
 
     category = models.CharField(max_length=15, blank=False, choices=Categories, default="")
     pub_date = models.DateField()

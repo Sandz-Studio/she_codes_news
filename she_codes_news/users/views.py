@@ -22,6 +22,6 @@ class AuthorProfileView(generic.DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['author.stories'] = NewsStory.objects.filter(author=self.request.user)
+        context['user_stories'] = NewsStory.objects.filter(author=self.request.user)
         return context
         
