@@ -1,10 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
 
 {% block content %} 
-    <h2>Create Account</h2> 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create Account</button>
-    </form>
+<section id="author-profile">
+    {% if request.user.is_authenticated %}
+    <h2>{{ story.author }}</h2> 
+    
+    <div>
+        {% if author.profile_photo %}
+            <img src="{{ author.profile_photo }}">
+        {% else %}
+            <img src="{% static '/news/images/placeholder-5.jpg' %}">
+        {% endif %}
+        {{ author.stories|linebreaks }}
+    </div>
+
+    {% else %}
+        <p> You are not authenticated </p>
+    {% endif %}
+    
+</section>
 {% endblock %}
