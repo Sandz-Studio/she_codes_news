@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/styles.css'
+%}">
+{% endblock %}
+
+{% block content %} 
+<section id="delete-story">
+    {% if request.user.is_authenticated %}
+        <h2>Hello {{ user.username }}!</h2> 
+
+        {% for story in user_stories %}
+            {% if story.id == story.id %}
+                <div id="story-content">
+                    <h3>{{ story.title }}</h3>
+                    {% if story.image %}
+                    <img src="{{ story.image }}">
+                    {% else %}
+                    <img src="{% static 'news/images/placeholder-5.jpg' %}">
+                    {% endif %}
+                    <p>{{ story.content }}</p> 
+
+                    <form method="post" action="{% url 'deleteStory' story.id %}">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete">
+                    </form>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    {% else %}
+        <p> You are not authenticated </p>
+    {% endif %}
+    
+</section>
+{% endblock %}

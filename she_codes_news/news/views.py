@@ -2,6 +2,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
+from django.shortcuts import get_object_or_404
 
 
 class IndexView(generic.ListView):
@@ -31,3 +32,22 @@ class AddStoryView(generic.CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+class UpdateStoryView(generic.UpdateView):
+    model = NewsStory
+    template_name = 'news/updateStory.html'
+    fields = ['title', 'category', 'image', 'content']
+    success_url = reverse_lazy('news:index')
+
+class DeleteStoryView(generic.DeleteView):
+    model = NewsStory
+    template_name = 'news/deleteStory.html'
+    context_object_name = 'deletestory'
+    success_url = reverse_lazy('news:index')
+
+    def get_object(self, *args, **kwargs):
+         return get_object_or_404(NewsStory, id=self.kwargs['story_id'], author=self.request.user)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
