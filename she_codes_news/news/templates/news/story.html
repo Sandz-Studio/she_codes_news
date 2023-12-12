@@ -1,36 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css'
-%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
 {% block content %}
-
-<div id="story-wrapper">
+<section id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <h4>{{ story.author }}</h4>
+    <a href="{% url 'users:authorProfile' %}"><h3>{{ story.author.username }}</h3></a>
+    
     <div id="story-content">
         {% if story.image %}
-        <img src="{{ story.image }}">
+            <img src="{{ story.image }}">
         {% else %}
-        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+            <img src="{% static '/news/images/placeholder-5.jpg' %}">
         {% endif %}
-
         {{ story.content|linebreaks }}
-        {% if request.user.is_authenticated %}
-            {% if request.user == story.author %}
-                <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
-                <!-- <button type="button">Update</button> -->
-                <!-- style link as button lATER! -->
-
-                
-                <a href="{% url 'news:updateStory' story.id %}">Update</a>
-                <!-- style link as button lATER! -->
-            {% endif %}
-        {% endif %}
-
     </div>
-</div>
+</section>
 
+<section>
+    {% if request.user.is_authenticated %}
+        {% if request.user == story.author %}
+            <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
+            <!-- style link as a button LATER! -->
+            <a href="{% url 'news:updateStory' story.id %}">Update</a>
+            <!-- style link as a button LATER! -->
+        {% endif %}
+    {% endif %}
+</section>
 {% endblock %}

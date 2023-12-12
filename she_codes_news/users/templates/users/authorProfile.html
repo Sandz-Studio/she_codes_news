@@ -6,34 +6,36 @@
 {% endblock %}
 
 {% block content %} 
-<section id="author-profile">
-    {% if request.user.is_authenticated %}
-    <h2>Hello {{ user.username }}!</h2> 
-    
-    <div>
-        {% if user.profile_photo %}
-            <img src="{{ user.profile_photo }}">
+    <section id="author-profile">
+        {% if request.user.is_authenticated %}
+            <h2>Hello {{ user.username }}!</h2> 
+            <div>
+                {% if user.profile_photo %}
+                    <img src="{{ user.profile_photo }}">
+                {% else %}
+                    <img src="{% static '/news/images/placeholder-5.jpg' %}">
+                {% endif %}
+            </div>
+            <div>
+                <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                <p>DOB: {{ user.birth_date }}</p>
+                <p>Bio: {{ user.bio }}</p>
+            </div>
+
+            <div>
+                {% for story in user_stories %}
+                    <a href="{% url 'news:story' story.id %}"><h4>{{ story.title }}</h4></a>
+                    <h5>{{ story.pub_date }}</h5>
+                    {% if story.image %}
+                        <img src="{{ story.image }}">
+                    {% else %}
+                        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+                    {% endif %}
+                    <p> </p>
+                {% endfor %}
+            </div>
         {% else %}
-            <img src="{% static '/news/images/placeholder-5.jpg' %}">
+            <p> You are not authenticated </p>
         {% endif %}
-    </div>
-    <div>
-        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
-        <p>DOB: {{ user.birth_date }}</p>
-        <p>Bio: {{ user.bio }}</p>
-    </div>
-
-    <div>
-        {% for story in user_stories %}
-        <a href="{% url 'news:story' story.id %}">
-            <h4>{{ story.title }}</h4>
-        </a>
-        {% endfor %}
-    </div>
-
-    {% else %}
-        <p> You are not authenticated </p>
-    {% endif %}
-    
-</section>
+    </section>
 {% endblock %}

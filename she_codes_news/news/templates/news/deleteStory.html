@@ -1,34 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{% static 'users/styles.css'
-%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
 {% block content %} 
 <section id="delete-story">
     {% if request.user == story.author %}
         <h2>Hello {{ user.username }}!</h2> 
-        
+        <p>Are you sure you would like to delete {{ story.title }}</p>
         <form method="post">
             {% csrf_token %}
-            <p>Are you sure you would like to delete {{ story.title }}</p>
             <input type="submit" value="Yes">
         </form>
-        <!-- {% for story in user_stories %}
-            {% if story.id == story.id %}
-                <div id="story-content">
-                    <h3>{{ story.title }}</h3>
-                    {% if story.image %}
-                    <img src="{{ story.image }}">
-                    {% else %}
-                    <img src="{% static '/news/images/placeholder-5.jpg' %}">
-                    {% endif %}
-                    <p>{{ story.content }}</p>  -->
-                <!-- </div>
-            {% endif %}
-        {% endfor %} -->
-
+        <a href="{% url 'news:story' story.id %}">No</a>
+        <!-- Style as Button LATER -->
     {% else %}
         <p> You are not authenticated </p>
     {% endif %}
