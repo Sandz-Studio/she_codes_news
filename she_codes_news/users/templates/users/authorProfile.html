@@ -18,15 +18,16 @@
         {% endif %}
     </div>
     <div>
-        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
         <p>DOB: {{ user.birth_date }}</p>
         <p>Bio: {{ user.bio }}</p>
     </div>
+
     <div>
         {% for story in user_stories %}
-            <h3>{{ story.title }}</h3>
-            <p>{{ story.content }}</p> 
-            <!-- Include other details as needed -->
+        <a href="{% url 'news:story' story.id %}">
+            <h4>{{ story.title }}</h4>
+        </a>
         {% endfor %}
     </div>
 

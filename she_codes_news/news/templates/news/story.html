@@ -18,6 +18,18 @@
         {% endif %}
 
         {{ story.content|linebreaks }}
+        {% if request.user.is_authenticated %}
+            {% if request.user == story.author %}
+                <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
+                <!-- <button type="button">Update</button> -->
+                <!-- style link as button lATER! -->
+
+                
+                <a href="{% url 'news:updateStory' story.id %}">Update</a>
+                <!-- style link as button lATER! -->
+            {% endif %}
+        {% endif %}
+
     </div>
 </div>
 

@@ -7,27 +7,27 @@
 
 {% block content %} 
 <section id="delete-story">
-    {% if request.user.is_authenticated %}
+    {% if request.user == story.author %}
         <h2>Hello {{ user.username }}!</h2> 
-
-        {% for story in user_stories %}
+        
+        <form method="post">
+            {% csrf_token %}
+            <p>Are you sure you would like to delete {{ story.title }}</p>
+            <input type="submit" value="Yes">
+        </form>
+        <!-- {% for story in user_stories %}
             {% if story.id == story.id %}
                 <div id="story-content">
                     <h3>{{ story.title }}</h3>
                     {% if story.image %}
                     <img src="{{ story.image }}">
                     {% else %}
-                    <img src="{% static 'news/images/placeholder-5.jpg' %}">
+                    <img src="{% static '/news/images/placeholder-5.jpg' %}">
                     {% endif %}
-                    <p>{{ story.content }}</p> 
-
-                    <form method="post" action="{% url 'deleteStory' story.id %}">
-                        {% csrf_token %}
-                        <input type="submit" value="Delete">
-                    </form>
-                </div>
+                    <p>{{ story.content }}</p>  -->
+                <!-- </div>
             {% endif %}
-        {% endfor %}
+        {% endfor %} -->
 
     {% else %}
         <p> You are not authenticated </p>
