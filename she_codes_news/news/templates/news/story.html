@@ -9,7 +9,7 @@
 <section id="story-wrapper">
     <h2>{{ story.title }}</h2>
     <a href="{% url 'news:viewAuthor' pk=story.author.pk %}"><h3>{{ story.author.username }}</h3></a>
-    
+    <p>{{ story.pub_date }}</p>
     <div id="story-content">
         {% if story.image %}
             <img src="{{ story.image }}">
@@ -19,6 +19,32 @@
         {{ story.content|linebreaks }}
     </div>
 </section>
+
+<!-- show comments -->
+<section>
+    <h3>Comments</h3>
+    {% if story.comments.count %}
+        {% for comment in story.comments.all %}
+            {% include "./commentCard.html" with comment=comment %}
+        {% endfor %}
+    {% else %}
+    <p>No comments yet.</p>
+    {% endif %}
+</section>
+
+<div>
+    {% if request.user.is_authenticated %}
+    <h4>Leave a comment</h4>
+        <form id="comment-form" method="post" action="{% url 'news:addComment' story.id %}" >
+                {% csrf_token %}
+                {{ form.as_p }}
+        <input class="submit-button" type="submit" value="Add Comment">
+    {% else %}
+        <a href="{% url 'login' %}">log in to comment on stories</a>
+        <!-- Style as button -->
+    {% endif %}
+    </form>
+</div>
 
 <section>
     {% if request.user.is_authenticated %}

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.forms import ModelForm
+
 
 
 class NewsStory(models.Model):
@@ -25,8 +27,9 @@ class NewsStory(models.Model):
     content = models.TextField()
     image = models.URLField(null=True, blank=True)
 
-
-
-
-
-
+class Comment(models.Model):
+    story = models.ForeignKey(NewsStory, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments')  
+    content = models.TextField()
+    created = models.DateField(auto_now_add=True)
+    modified_date = models.DateField(auto_now=True)

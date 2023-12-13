@@ -1,9 +1,12 @@
+from typing import Any
+from django.db import models
 from django.views import generic
-from django.urls import reverse_lazy
-from .models import NewsStory
-from .forms import StoryForm
-from django.shortcuts import render
+from django.urls import reverse_lazy, reverse
+from .models import NewsStory, Comment
+from .forms import StoryForm, CommentForm
+from django.shortcuts import render, get_object_or_404, redirect
 from users.models import CustomUser
+from .forms import CommentForm
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -22,6 +25,12 @@ class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
     context_object_name = 'story'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        context['form'] = CommentForm()
+        return context
 
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
@@ -40,9 +49,15 @@ class UpdateStoryView(generic.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('news:story', kwargs={'pk': self.object.pk})
+    
+    # stop someone going through url to update a story that is not theirs
+    def form_valid(self, form):
+        if form.instance.author == self.request.user:
+            return super().form_valid(form)
 
-def DeleteSuccessView(request):
-    return render(request, 'news/deleteSuccess.html')
+# Function based view to confirm delete success
+# def DeleteSuccessView(request):
+#     return render(request, 'news/deleteSuccess.html')
 
 class DeleteStoryView(generic.DeleteView):
     model = NewsStory
@@ -71,6 +86,32 @@ class ViewAuthorView(generic.DetailView):
         context['all_stories'] = NewsStory.objects.filter(author_id=author_id)
         context['author'] = CustomUser.objects.get(id=self.kwargs['pk'])
         return context
+    
+class AddCommentView(generic.CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'news/story.html'
+    context_object_name = 'comments'
 
+    def get(self, request, *args, **kwargs):
+        return redirect("news:story", pk=self.kwargs.get("pk"))
 
- 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        pk = self.kwargs.get("pk")
+        story = get_object_or_404(NewsStory, pk=pk)
+        form.instance.story = story
+        response = super().form_valid(form)
+        return response
+    
+    def get_success_url(self):
+        pk = self.kwargs.get('pk')
+        return reverse('news:story', kwargs={'pk': pk})
+
+# If i have time do delete comment view
+
+# class DeleteCommentView(generic.DeleteView):
+#     model = Comment
+#     template_name = 'news/story.html'
+#     # success_url = reverse_lazy('news:index')
+#     context_object_name = 'deletecomment'
