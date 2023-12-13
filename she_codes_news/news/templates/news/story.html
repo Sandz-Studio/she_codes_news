@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
@@ -7,7 +8,7 @@
 {% block content %}
 <section id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <a href="{% url 'users:authorProfile' %}"><h3>{{ story.author.username }}</h3></a>
+    <a href="{% url 'news:viewAuthor' pk=story.author.pk %}"><h3>{{ story.author.username }}</h3></a>
     
     <div id="story-content">
         {% if story.image %}
@@ -22,9 +23,9 @@
 <section>
     {% if request.user.is_authenticated %}
         {% if request.user == story.author %}
-            <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
-            <!-- style link as a button LATER! -->
             <a href="{% url 'news:updateStory' story.id %}">Update</a>
+            <!-- style link as a button LATER! -->
+            <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
             <!-- style link as a button LATER! -->
         {% endif %}
     {% endif %}

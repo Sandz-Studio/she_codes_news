@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %} 
+    <section id="author-details">
+            <h2> {{ author.username }} </h2> 
+            <div>
+                {% if author.profile_photo %}
+                    <img src="{{ author.profile_photo }}">
+                {% else %}
+                    <img src="{% static '/news/images/placeholder-5.jpg' %}">
+                {% endif %}
+            </div>
+            <div>
+                <h3>{{ author.first_name }} {{ author.last_name }}</h3>
+                <p>Bio: {{ author.bio }}</p>
+            </div>
+
+            <div>
+                <h4> My stories </h4>
+                {% for story in all_stories %}
+                    <a href="{% url 'news:story' story.id %}"><h4>{{ story.title }}</h4></a>
+                    <h5>{{ story.pub_date }}</h5>
+                    {% if story.image %}
+                        <img src="{{ story.image }}">
+                    {% else %}
+                        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+                    {% endif %}
+                    <p> </p>
+                {% endfor %}
+            </div>
+    </section>
+{% endblock %}

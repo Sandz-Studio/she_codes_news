@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
 from django.shortcuts import render
+from users.models import CustomUser
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
@@ -53,6 +54,23 @@ class DeleteStoryView(generic.DeleteView):
         context = super().get_context_data(**kwargs)
         context['story'] = NewsStory.objects.get(id=self.kwargs['pk'])
         return context
-        
+
+class ViewAuthorView(generic.DetailView):
+    model = CustomUser
+    template_name = 'news/viewAuthor.html'
+    context_object_name = 'viewAuthor'
+
+    def get_object(self, *args, **kwargs):
+        return CustomUser.objects.get(pk=self.kwargs['pk'])
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        author_id = self.kwargs['pk']
+
+        # get the author's stories
+        context['all_stories'] = NewsStory.objects.filter(author_id=author_id)
+        context['author'] = CustomUser.objects.get(id=self.kwargs['pk'])
+        return context
+
 
  

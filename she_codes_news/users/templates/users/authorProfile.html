@@ -19,10 +19,15 @@
             <div>
                 <h3>{{ user.first_name }} {{ user.last_name }}</h3>
                 <p>DOB: {{ user.birth_date }}</p>
+                <p>Email: {{ user.email }}</p>
                 <p>Bio: {{ user.bio }}</p>
             </div>
-
             <div>
+                <a href="{% url 'users:updateProfile' %}">Update</a>
+                <!-- style link as a button LATER! -->
+            </div>
+            <div>
+                <h4>Your Stories</h4>
                 {% for story in user_stories %}
                     <a href="{% url 'news:story' story.id %}"><h4>{{ story.title }}</h4></a>
                     <h5>{{ story.pub_date }}</h5>
@@ -35,7 +40,7 @@
                 {% endfor %}
             </div>
         {% else %}
-            <p> You are not authenticated </p>
+            <!-- <p> You are not authenticated </p> -->
         {% endif %}
     </section>
 {% endblock %}
