@@ -1,20 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+
+/* GLOBAL */
 body {
     background-color: rgb(240, 239, 239);
 }
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #000;
+a {
+    /* margin: 2px; */
+    padding-bottom: 4px;
+    padding-left: 4px;
+    text-decoration: none;
+    color: #000;
 }
 
-/* img {
-    filter: grayscale(100%);
-} */
+a, p {
+    font-family: monospace;
+}
 
+/* HEADINGS */
 h1 {
     font-family: 'Montserrat Subrayada', sans-serif;
     text-decoration: none;
@@ -23,32 +29,86 @@ h1 {
 }
 
 h2 {
-   font-family: 'Montserrat Subrayada', sans-serif; 
+   font-family: 'Montserrat Subrayada', sans-serif;
+   font-size: 1.6rem; 
 }
 
 h3 {
-    font-size: 2rem;
+    font-family: monospace;
+    font-size: 1rem;
     margin: 0;
+}
+
+h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    margin: 0;
+}
+
+h5 {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: .5rem;
+}
+
+body {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #000;
+}
+
+.emphasis {
+    color: #800080;
+}
+
+
+#slogan {
+    font-style: italic;
 }
 
 #header-text {
     flex-basis: 80%;
     display: flex;
+    padding-bottom: 0.8em;
 }
 
+/* NAV */
 nav {
     flex-basis: 20%;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: flex-end;
-}
-
-a {
-    margin: 2px;
-    text-decoration: none;
-    color: #000;
-}
-
-a, p {
     font-family: monospace;
+    font-weight: 500;
 }
+
+#nav-name {
+    font-weight: 500;
+}
+
+.nav-links {
+    padding-bottom: 6px;
+}
+
+.nav-links:hover {
+    color: #800080;
+    text-decoration: underline;
+}
+
+#log-function {
+    font-style: italic;
+}
+
+
+
+
