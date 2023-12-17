@@ -22,39 +22,38 @@ The theme of my website was inspired by the TV shows I was watching while learni
 
 ## Project Features
 - [x] Order stories by date
-![ Stories ordered newest to oldest ]( she_codes_news/img/Screen Shot 2023-12-17 at 11.03.09 pm.png )
+Stories ordered newest to oldest she_codes_news/img/Screen Shot 2023-12-17 at 11.03.09 pm.png 
 
 - [ ] Styled "new story" form
-![ {{ Description of image }} ]( {{ ./relative_path_to_image_file }} )
+
 
 - [x] Story images
-![ Individual story page with image ]( she_codes_news/img/Screen Shot 2023-12-17 at 11.04.28 pm.png )
+Individual story page with image she_codes_news/img/Screen Shot 2023-12-17 at 11.04.28 pm.png
 
 - [x] Log-in/log-out
-![ Log out button only visible when loged in ]( she_codes_news/img/Screen Shot 2023-12-17 at 11.07.09 pm.png )
+Log out button only visible when loged in she_codes_news/img/Screen Shot 2023-12-17 at 11.07.09 pm.png
 
 - [x] "Account view" page
-![ View your own account and list of all your stories ]( she_codes_news/img/Screen Shot 2023-12-17 at 11.07.09 pm.png )
+View your own account and list of all your stories she_codes_news/img/Screen Shot 2023-12-17 at 11.07.09 pm.png
 
 - [x] "Create Account" page
-![ {{ Create account only accessible when logged out }} ]( she_codes_news/img/Screen Shot 2023-12-17 at 11.11.31 pm.png )
+Create account only accessible when logged out she_codes_news/img/Screen Shot 2023-12-17 at 11.11.31 pm.png
 
 - [x] View stories by author
-![ View your anothers account and list of all their stories ]( she_codes_news/img/Screen Shot 2023-12-17 at 11.07.45 pm.png )
+View your anothers account and list of all their stories she_codes_news/img/Screen Shot 2023-12-17 at 11.07.45 pm.png
 
-- [x] "Log-in" button only visible when no user is logged in/"Log-out" button
-        only visible when a user *is* logged in
-![ Log in only available when logged out]( she_codes_news/img/Screen Shot 2023-12-17 at 11.11.17 pm.png )
+- [x] "Log-in" button only visible when no user is logged in/"Log-out" button only visible when a user *is* logged in
+Log in only available when logged out she_codes_news/img/Screen Shot 2023-12-17 at 11.11.17 pm.png
 
-- [x] "Create Story" functionality only available when user is logged in ![ Create a story form ]( she_codes_news/img/Screen Shot 2023-12-17 at 11.06.32 pm.png )
+- [x] "Create Story" functionality only available when user is logged in 
+Create a story form she_codes_news/img/Screen Shot 2023-12-17 at 11.06.32 pm.png
 
 ## Additional Features:
 - [ ] Add categories to the stories and allow the user to search for stories by
         category.
 
-- [x] Add the ability to update and delete stories (consider permissions - who
-        should be allowed to update or and/or delete stories).
-    ![ Update and selete stories]( she_codes_news/img/Screen Shot 2023-12-17 at 11.08.46 pm.png )
+- [x] Add the ability to update and delete stories (consider permissions - who should be allowed to update or and/or delete stories).
+Update and selete stories she_codes_news/img/Screen Shot 2023-12-17 at 11.08.46 pm.png
 
 - [ ] Add the ability to “favourite” stories and see a page with your favourite
         stories.
