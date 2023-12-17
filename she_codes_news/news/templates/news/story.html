@@ -8,7 +8,7 @@
 {% block content %}
 <section id="story-wrapper">
     <h2>{{ story.title }}</h2>
-    <a href="{% url 'news:viewAuthor' pk=story.author.pk %}"><h3>{{ story.author.username }}</h3></a>
+    <a href="{% url 'news:viewAuthor' pk=story.author.pk %}"><h3 class="author-name">{{ story.author.username }}</h3></a>
     <p>{{ story.pub_date }}</p>
     <div id="story-content">
         {% if story.image %}
@@ -16,13 +16,25 @@
         {% else %}
             <img src="{% static '/news/images/placeholder-5.jpg' %}">
         {% endif %}
-        {{ story.content|linebreaks }}
     </div>
+    <div class="story-text">{{ story.content|linebreaks }}</div> 
 </section>
-
+<section>
+    {% if request.user.is_authenticated %}
+        {% if request.user == story.author %}
+      
+            <a href="{% url 'news:updateStory' story.id %}" class="button">Update</a>
+      
+          
+            <a href="{% url 'news:deleteStory' story.id %}" class="button">Delete</a>
+            
+        {% endif %}
+    {% endif %}
+</section>
+<br>
 <!-- show comments -->
 <section>
-    <h3>Comments</h3>
+    <h3 id="comment-wrapper">Comments</h3>
     {% if story.comments.count %}
         {% for comment in story.comments.all %}
             {% include "./commentCard.html" with comment=comment %}
@@ -45,15 +57,4 @@
     {% endif %}
     </form>
 </div>
-
-<section>
-    {% if request.user.is_authenticated %}
-        {% if request.user == story.author %}
-            <a href="{% url 'news:updateStory' story.id %}">Update</a>
-            <!-- style link as a button LATER! -->
-            <a href="{% url 'news:deleteStory' story.id %}">Delete</a>
-            <!-- style link as a button LATER! -->
-        {% endif %}
-    {% endif %}
-</section>
 {% endblock %}

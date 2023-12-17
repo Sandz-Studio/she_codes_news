@@ -1,13 +1,108 @@
+/* CSS reset code */
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+  
+*, *:before, *:after {
+       box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 8px;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+/* End of CSS Reset Code */
+
+
+/* GLOBAL */
+body {
+    background-color: rgb(240, 239, 239);
+}
+
+a {
+    /* margin: 2px; */
+    padding-bottom: 4px;
+    padding-left: 4px;
+    text-decoration: none;
+    color: #000;
+}
+
+a, p {
+    font-family: monospace;
+}
+
+/* HEADINGS */
+h1 {
+    font-family: 'Montserrat Subrayada', sans-serif;
+    text-decoration: none;
+    font-size: 4rem;
+    margin: 0;
+}
+
+h2 {
+   font-family: 'Montserrat Subrayada', sans-serif;
+   font-size: 1.6rem; 
+}
+
+h3 {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    text-decoration: underline;
+}
+
+h4 {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+h5 {
+    font-family: monospace;
+    font-size: .8rem;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: .5rem;
+}
+
+body {
+    margin-left: 20px;
+    margin-right: 20px;
+}
 .story-card {
-    margin: 2px;
-    border: 1px solid #000;
-    padding: 5px;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    /* border-radius: 5px; */
+    background-color: white;
+    min-height: 140px;
 }
 
 .story-card img {
     width: 100%;
-    height: 300px;
+    height: 350px;
     object-fit: cover;
+    /* padding-right: 4px; */
+    /* border-radius: 5px;   */
+}
+
+.story_image {
+    padding-right: 8px;
+    padding-top: 2px;
 }
 
 #latest-stories {
@@ -48,12 +143,15 @@
 #story-card-3 .story-card-text h3,
 #story-card-4 .story-card-text h3 {
     font-size: 16px;
+    padding-bottom: 2px;
 }
 
 #story-card-2 .story-card-text h4,
 #story-card-3 .story-card-text h4,
 #story-card-4 .story-card-text h4 {
-    font-size: 12px;
+    font-size: 13px;
+    /* font-weight: lighter; */
+    
 }
 
 #story-card-2 img,
@@ -75,12 +173,94 @@
     flex-grow: 1;
 }
 
+/* loggen on own profile view */
+#story-wrapper {
+    margin: 30px 20px 0 10px;
+}
+
 #story-content {
-    text-align: justify;
+    float: right;
 }
 
 #story-content img {
     float: right;
-    margin: 0 0 10px 10px;
-    width: 50%;
+    margin: 0 20px 30px 20px;
+    width: 550px;
 }
+
+#story-text {
+    text-align: left;
+}
+
+.comment-card {
+    padding-bottom: 10px;
+}
+
+.comment {
+    font-size: smaller;
+}
+
+
+.author-name:hover {
+    color: #800080;
+    text-decoration: underline;
+}
+
+.author-profile {
+    margin: 0 0 100px 0;
+}
+
+.author-photo {
+    float: right;
+    margin-right: 50px;
+    margin-left: 50px;
+    height: 200px;
+}
+
+.stories-list {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    /* border-radius: 5px; */
+    background-color: white;
+    min-height: 140px;
+}
+
+.stories-list img {
+    margin: 15px 0 5px 0;
+}
+
+
+.story-title:hover {
+    color: #800080;
+    text-decoration: underline;
+}
+
+/* Universal button Styling */
+.button {
+    padding: 5px 10px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    border: 2px solid black;
+    border-radius: .5px;
+    margin-top:40px;  
+    text-align: center;
+}
+
+.button:hover {
+    color: #800080;
+    text-decoration: underline;
+    border-color: #800080;
+}
+
+/* view other authors profiles */
+.view-author {
+    margin-bottom: 150px;
+}
+
+
+/* Delete confirmation */
+/* .delete-buttons {
+    display: inline;
+} */

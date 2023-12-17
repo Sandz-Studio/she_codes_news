@@ -2,14 +2,15 @@
 {% load static %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
 {% block content %} 
-    <section id="author-profile">
-        {% if request.user.is_authenticated %}
-            <h2>Hello {{ user.username }}!</h2> 
-            <div>
+
+    {% if request.user.is_authenticated %}
+        <section class="author-profile">
+            <h2>Hello, {{ user.username }}!</h2> 
+            <div class="author-photo">
                 {% if user.profile_photo %}
                     <img src="{{ user.profile_photo }}">
                 {% else %}
@@ -21,26 +22,27 @@
                 <p>DOB: {{ user.birth_date }}</p>
                 <p>Email: {{ user.email }}</p>
                 <p>Bio: {{ user.bio }}</p>
-            </div>
-            <div>
+            </div> 
+            <div class="button">
                 <a href="{% url 'users:updateProfile' %}">Update</a>
-                <!-- style link as a button LATER! -->
             </div>
-            <div>
-                <h4>Your Stories</h4>
-                {% for story in user_stories %}
-                    <a href="{% url 'news:story' story.id %}"><h4>{{ story.title }}</h4></a>
-                    <h5>{{ story.pub_date }}</h5>
-                    {% if story.image %}
-                        <img src="{{ story.image }}">
-                    {% else %}
-                        <img src="{% static '/news/images/placeholder-5.jpg' %}">
-                    {% endif %}
-                    <p> </p>
-                {% endfor %}
-            </div>
-        {% else %}
-            <!-- <p> You are not authenticated </p> -->
-        {% endif %}
-    </section>
+        </section>
+        <br>
+        <div class="stories-list">
+            <h3>Your Stories</h3>
+            <br>
+            {% for story in user_stories %}
+                {% if story.image %}
+                    <img src="{{ story.image }}">
+                {% else %}
+                    <img src="{% static '/news/images/placeholder-5.jpg' %}">
+                {% endif %}
+                <a href="{% url 'news:story' story.id %}"><h3>{{ story.title }}</h3></a>
+                <h5>{{ story.pub_date }}</h5>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p> You are not authenticated. </p>
+    {% endif %}
+
 {% endblock %}

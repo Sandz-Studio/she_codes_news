@@ -2,7 +2,8 @@
     <!-- Home button is not needed -->
     <!-- <a href="{% url 'news:index' %}">Home</a> -->
     {% if request.user.is_authenticated %}
-        <h5 id="nav-name">Hi, <span class="emphasis">{{ user.first_name }}!</span></h5>
+        <h4 id="nav-name">Hi, {{ user.first_name }}</h4>
+        <br>
         <a href="{% url 'users:authorProfile' %}" class="nav-links">My Profile</a>
         <a href="{% url 'news:newStory' %}" class="nav-links">Add Story</a>
         <a href="{% url 'logout' %}" id="log-function" class="nav-links">Logout</a>
@@ -11,3 +12,5 @@
         <a href="{% url 'users:createAccount' %}" class="nav-links">Create Account </a>
     {% endif %}
 </nav>
+
+<!-- <span class="emphasis">{{ user.first_name }}!</span> -->

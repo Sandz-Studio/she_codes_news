@@ -9,12 +9,13 @@
     {% if request.user == story.author %}
         <h2>Hello {{ user.username }}!</h2> 
         <p>Are you sure you would like to delete {{ story.title }}</p>
+        <div class="delete-buttons">
         <form method="post">
             {% csrf_token %}
             <input type="submit" value="Yes">
         </form>
-        <a href="{% url 'news:story' story.id %}">No</a>
-        <!-- Style as Button LATER -->
+        <a href="{% url 'news:story' story.id %}" class="button">No</a>
+        </div>
     {% else %}
         <p> You are not authenticated </p>
     {% endif %}

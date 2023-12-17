@@ -22,3 +22,7 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ['content']
+
+    #     widgets = {
+    #     'content': forms.TextInput(attrs={'class': 'hidden-label'}),
+    # }
