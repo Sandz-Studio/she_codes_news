@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
-    'django_extensions',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -133,9 +132,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'news:index'
 LOGOUT_REDIRECT_URL = 'news:index'
-
-
-GRAPH_MODELS = {
-    'all_applications': True,
-    'group_models': True,
-}

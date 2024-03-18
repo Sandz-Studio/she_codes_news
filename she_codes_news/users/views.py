@@ -2,9 +2,9 @@ from typing import Any
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.views import generic
-
-from news.models import NewsStory
 from .models import CustomUser
+from news.models import NewsStory
+
 from .forms import CustomUserCreationForm
 from .forms import CustomUserChangeForm
 
