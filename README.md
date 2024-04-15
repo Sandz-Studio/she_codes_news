@@ -1,7 +1,7 @@
 # Sandra Lopez - She Codes News
 
 ## About This Project
-This is a News story webiste created using Django as a project for the She Codes Plus Program. 
+This is a News story website created using Django as a project for the She Codes Plus Program. 
 The theme of my website was inspired by the TV shows I was watching while learning Django.
 
 ## How To Run This Code
