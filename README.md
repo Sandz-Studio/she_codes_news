@@ -1,4 +1,4 @@
-# Sandra Lopez - She Codes News Project
+# Sandra Lopez - She Codes News
 
 ## About This Project
 This is a News story webiste created using Django as a project for the She Codes Plus Program. 
