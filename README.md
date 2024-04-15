@@ -1,7 +1,3 @@
-# Plus Resources: Django Project Starter
-
-Starter code for the Plus Django project.
-
 # Sandra Lopez - She Codes News Project
 
 ## About This Project
